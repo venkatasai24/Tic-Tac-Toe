@@ -1,7 +1,9 @@
 var i=0;
 var flag=0;
-const boxes = document.querySelectorAll(".square");
-const content=new Array(boxes.length);
+var audio;
+var boxes = document.querySelectorAll(".square");
+var content=new Array(boxes.length);
+var result=document.querySelector(".result");
 boxes.forEach((box,index) => {
     box.addEventListener('click', () => {
         if(flag===1) return;
@@ -29,6 +31,8 @@ function tie()
     if(count===9 && flag===0)
     {
         const result=document.querySelector(".result");
+        audio=new Audio("sounds/lose.wav");
+        audio.play();
         result.innerHTML= ` Tie ` ;
     }
 }
@@ -40,6 +44,8 @@ function check()
         if( (content[list[j][0]]==='X' || content[list[j][0]]==='O') && content[list[j][0]]===content[list[j][1]] && content[list[j][1]]===content[list[j][2]])
         {
             flag = 1;
+            audio=new Audio("sounds/win.wav");
+            audio.play();
             const result=document.querySelector(".result");
             result.innerHTML= ` ${content[list[j][0]]} Won!! ` ;
             boxes[list[j][0]].classList.add("final");
@@ -50,5 +56,17 @@ function check()
     }
 }
 
+function clearAll()
+{
+    flag=0;
+    i=0;
+    boxes.forEach((box) => {
+        box.classList.remove("final");
+        box.innerHTML= '' ;
+    });
+    content=new Array(boxes.length);
+    result=document.querySelector(".result");
+    result.innerHTML= `` ;
+}
 
 
