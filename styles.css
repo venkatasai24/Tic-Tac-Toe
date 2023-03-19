@@ -58,6 +58,28 @@ button:hover{
     border: 1px solid white;
 }
 
+.foot {
+    position: absolute;
+    bottom: 2% ;
+    left:50%;
+    transform: translate(-50%,0%);
+    text-align: center;
+    color: black ;
+}
+
+.foot-link {
+    color: black;
+}
+
+.social-icon {
+    color: black;
+    margin: 20px 10px ;
+}
+
+.social-icon:hover {
+    color: beige ;
+}
+
 @media (max-width:350px) {
     .square {
         height: 75px;
